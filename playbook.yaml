@@ -1,0 +1,39 @@
+---
+  - name: Install Tools
+    hosts: localhost
+    connection: local
+    become: yes
+    tasks:
+      - name: install git
+        apt:
+          name: git
+          state: present
+          update_cache: yes
+      - name: install jq
+        apt:
+          name: jq
+          state: present
+          update_cache: yes
+      - name: get oc cli
+        get_url:
+          url: https://mirror.openshift.com/pub/openshift-v4/amd64/clients/ocp/latest/openshift-client-linux.tar.gz
+          dest: ~/occli.tar.gz
+          force: yes
+      - name: extract oc and kubectl cli
+        unarchive:
+          src: ~/occli.tar.gz
+          dest: /usr/bin/
+          remote_src: True
+  - name: Configure git
+    hosts: localhost
+    connection: local
+    become_user: mshire
+    tasks:
+      - git_config:
+          name: user.email
+          scope: global
+          value: 'mike_shire@hotmail.com'
+      - git_config:
+          name: user.name
+          scope: global
+          value: 'Michael Shire'
