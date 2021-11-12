@@ -36,9 +36,9 @@ Run the following commands to install ansible:
 
 ```
 sudo apt update
-sudo apt install software-properties-common
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
+sudo apt install software-properties-common -y
+sudo add-apt-repository --yes --update ppa:ansible/ansible -y
+sudo apt install ansible -y
 ```
 
 Then run this playbook
