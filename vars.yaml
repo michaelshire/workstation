@@ -1,4 +1,7 @@
-ubuntu_username: 'mshire'
-git.username: 'Michael Shire'
-git.email: 'mike_shire@hotmail.com'
+# Username in your ubuntu image
+ubuntu_username: 'username'
+# Git username
+git.username: 'Firstname Lastname'
+# Git email address
+git.email: 'email@here.com'
 
