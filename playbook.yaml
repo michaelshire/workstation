@@ -41,13 +41,14 @@
   - name: Configure git
     hosts: localhost
     connection: local
-    become_user: mshire
+    vars_files: ./vars.yaml
+    become_user: "{{ ubuntu_username }}"
     tasks:
       - git_config:
           name: user.email
           scope: global
-          value: 'mike_shire@hotmail.com'
+          value: "{{ git.email }}"
       - git_config:
           name: user.name
           scope: global
-          value: 'Michael Shire'
+          value: "{{ git.username }}"
