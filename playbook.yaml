@@ -24,6 +24,20 @@
           src: ~/occli.tar.gz
           dest: /usr/bin/
           remote_src: True
+      - name: install azure cli dependencies
+        apt:
+          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg
+          state: present
+          update_cache: yes
+      - name: install microsoft gpg key
+        ansible.builtin.apt_key:
+          state: present
+          url: https://packages.microsoft.com/keys/microsoft.asc
+      - name: install azure cli
+        apt:
+          name: azure-cli
+          state: present
+          update_cache: yes
   - name: Configure git
     hosts: localhost
     connection: local
