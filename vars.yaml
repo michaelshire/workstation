@@ -1,7 +1,0 @@
-# Username in your ubuntu image
-ubuntu_username: 'mshire'
-# Git username
-git.username: 'Michael Shire'
-# Git email address
-git.email: 'Mike_shire@hotmail.com'
-
