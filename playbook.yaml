@@ -26,7 +26,7 @@
           remote_src: True
       - name: install azure cli dependencies
         apt:
-          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg
+          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg, python3-pip
           state: present
           update_cache: yes
       - name: install microsoft gpg key
@@ -42,7 +42,7 @@
     hosts: localhost
     connection: local
     vars_files: ./vars.yaml
-    become_user: "{{ ubuntu_username }}"
+    become_user: "{{ ubuntu.username }}"
     tasks:
       - git_config:
           name: user.email
