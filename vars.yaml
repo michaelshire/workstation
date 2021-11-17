@@ -1,0 +1,10 @@
+#This is an example vars.yaml file
+#
+# The username you use to login to the ubuntu image
+ubuntu_username: 'username'
+#
+# The email address for git pushes
+git.email: 'first.last@domain.com'
+#
+# The username used for git pushes
+git.username: 'Firstname Lastname'
