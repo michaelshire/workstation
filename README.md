@@ -41,10 +41,8 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible -y
 sudo apt install ansible -y
 ```
 
-Then run this playbook
-
 Note: there is an issue with the playbook getting the gpg key from Microsoft while connected to Ledcor VPN.  Disconnect from the VPN before running this playbook.
-=======
+
 Then run this playbook with:
 
 ```
