@@ -1,19 +1,26 @@
 ---
-  - name: Install Tools
+  - name: Install Base Tools
     hosts: localhost
     connection: local
     become: yes
+    vars_files: ./vars.yaml
     tasks:
       - name: install git
         apt:
           name: git
-          state: present
+          state: "{{ git.state }}"
           update_cache: yes
       - name: install jq
         apt:
           name: jq
-          state: present
+          state: "{{ jq.state }}"
           update_cache: yes
+  - name: Install OC CLI
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
       - name: get oc cli
         get_url:
           url: https://mirror.openshift.com/pub/openshift-v4/amd64/clients/ocp/latest/openshift-client-linux.tar.gz
@@ -24,19 +31,44 @@
           src: ~/occli.tar.gz
           dest: /usr/bin/
           remote_src: True
-      - name: install azure cli dependencies
-        apt:
-          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg, python3-pip
-          state: present
-          update_cache: yes
+  - name: Install AZ CLI
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
       - name: install microsoft gpg key
         ansible.builtin.apt_key:
           state: present
           url: https://packages.microsoft.com/keys/microsoft.asc
+      - name: Ensure install azure cli dependencies are installed
+        apt:
+          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg, python3-pip
+          state: "{{ azurecli.dependenciesstate }}"
+          update_cache: yes
       - name: install azure cli
         apt:
           name: azure-cli
+          state: "{{ azurecli.clistate }}"
+          update_cache: yes
+  - name: Install Terraform CLI
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
+      - name: install hashicorp gpg key
+        ansible.builtin.apt_key:
           state: present
+          url: https://apt.releases.hashicorp.com/gpg
+      - name: install terraform apt repository
+        apt_repository:
+          repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+          state: present
+      - name: install terraform cli
+        apt:
+          name: terraform
+          state: "{{ terraform.clistate }}"
           update_cache: yes
   - name: Configure git
     hosts: localhost

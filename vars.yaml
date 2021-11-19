@@ -1,6 +1,13 @@
 ubuntu:
   username: 'mshire'
 git:
+  state: present
   email: 'mike_shire@hotmail.com'
   username: 'Michael Shire'
-
+jq:
+  state: present
+azurecli:
+  clistate: present
+  dependenciesstate: present
+terraform:
+  clistate: present
