@@ -35,6 +35,15 @@
     become: yes
     vars_files: ./vars.yaml
     tasks:
+      - name: remove the default ubuntu version of the azure cli
+        apt:
+          name: azure-cli
+          state: absent
+          autoremove: yes
+      - name: install azure-cli apt repository
+        apt_repository:
+          repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
+          state: present
       - name: install microsoft gpg key
         ansible.builtin.apt_key:
           state: present
