@@ -1,21 +1,19 @@
 ---
-  - name: Install Base Tools
+  - name: Configure git
     hosts: localhost
     connection: local
-    become: yes
     vars_files: ./vars.yaml
+    become_user: "{{ ubuntu.username }}"
     tasks:
-      - name: install git
-        apt:
-          name: git
-          state: "{{ git.state }}"
-          update_cache: yes
-      - name: install jq
-        apt:
-          name: jq
-          state: "{{ jq.state }}"
-          update_cache: yes
-  - name: Install OC CLI
+      - git_config:
+          name: user.email
+          scope: global
+          value: "{{ git.email }}"
+      - git_config:
+          name: user.name
+          scope: global
+          value: "{{ git.username }}"
+- name: Install OC CLI
     hosts: localhost
     connection: local
     become: yes
@@ -43,7 +41,7 @@
           url: https://packages.microsoft.com/keys/microsoft.asc
       - name: Ensure install azure cli dependencies are installed
         apt:
-          name: ca-certificates, curl, apt-transport-https, lsb-release, gnupg, python3-pip
+          name: apt-transport-https, gnupg, python3-pip
           state: "{{ azurecli.dependenciesstate }}"
           update_cache: yes
       - name: install azure cli
@@ -70,17 +68,3 @@
           name: terraform
           state: "{{ terraform.clistate }}"
           update_cache: yes
-  - name: Configure git
-    hosts: localhost
-    connection: local
-    vars_files: ./vars.yaml
-    become_user: "{{ ubuntu.username }}"
-    tasks:
-      - git_config:
-          name: user.email
-          scope: global
-          value: "{{ git.email }}"
-      - git_config:
-          name: user.name
-          scope: global
-          value: "{{ git.username }}"
