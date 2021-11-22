@@ -13,7 +13,7 @@
           name: user.name
           scope: global
           value: "{{ git.username }}"
-- name: Install OC CLI
+  - name: Install OC CLI
     hosts: localhost
     connection: local
     become: yes
