@@ -9,5 +9,7 @@ jq:
 azurecli:
   clistate: present
   dependenciesstate: present
+aws:
+  clistate: present
 terraform:
   clistate: present

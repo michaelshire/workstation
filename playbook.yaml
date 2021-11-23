@@ -1,4 +1,15 @@
 ---
+  - name: install base packages
+    hosts: localhost
+    connection: local
+    vars_files: ./vars.yaml
+    become: yes
+    tasks:
+      - name: install base packages
+        apt:
+          name: unzip
+          state: present
+          update_cache: yes
   - name: Configure git
     hosts: localhost
     connection: local
@@ -58,6 +69,29 @@
           name: azure-cli
           state: "{{ azurecli.clistate }}"
           update_cache: yes
+  - name: Install AWS CLI
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
+      - name: remove aws cli
+        apt:
+          name: awscli 
+          state: absent
+          autoremove: yes
+      - name: download the aws cli package
+        get_url:
+          url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+          dest: ~/awscli.zip
+          force: yes
+      - name: unzip the archive
+        unarchive:
+          src: ~/awscli.zip
+          dest: /tmp/
+          remote_src: True
+      - name: run the aws installer script
+        ansible.builtin.shell: /tmp/aws/install && hash aws
   - name: Install Terraform CLI
     hosts: localhost
     connection: local
