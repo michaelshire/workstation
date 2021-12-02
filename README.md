@@ -1,14 +1,17 @@
-# workstation
+# Workstation automated configuration
+
 Ansible playbook for workstation configuration
 
-## Install WSL and fix DNS
+## Install WSL
+
 For a Windows workstation, first install WSL
 
 ```
 wsl --install
 ```
 
-Fix the WSL DNS issue if necessary by creating /etc/wsl.conf with the following contents:
+## Test and fix DNS if required
+Check DNS of the base configuration.  If DNS isn't working, fix the WSL DNS issue if necessary by creating /etc/wsl.conf with the following contents:
 
 ```
 [network]
