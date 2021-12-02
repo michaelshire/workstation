@@ -44,7 +44,15 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible -y
 sudo apt install ansible -y
 ```
 
-Note: there is an issue with the playbook getting the gpg key from Microsoft while connected to Ledcor VPN.  Disconnect from the VPN before running this playbook.
+Note: there is an issue with the playbook getting the gpg key from Microsoft while connected to some VPNs.  Disconnect from the VPN before running this playbook.
+
+Clone this repository:
+
+```
+git clone https://github.com/michaelshire/workstation.git
+```
+
+Modify the variables in the ~/workstation/vars.yaml file.
 
 Then run this playbook with:
 
