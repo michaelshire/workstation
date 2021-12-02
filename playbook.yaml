@@ -51,14 +51,14 @@
           name: azure-cli
           state: absent
           autoremove: yes
-      - name: install azure-cli apt repository
-        apt_repository:
-          repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
-          state: present
       - name: install microsoft gpg key
         ansible.builtin.apt_key:
           state: present
           url: https://packages.microsoft.com/keys/microsoft.asc
+      - name: install azure-cli apt repository
+        apt_repository:
+          repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
+          state: present
       - name: Ensure install azure cli dependencies are installed
         apt:
           name: apt-transport-https, gnupg, python3-pip
