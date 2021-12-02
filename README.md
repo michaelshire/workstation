@@ -49,6 +49,7 @@ Note: there is an issue with the playbook getting the gpg key from Microsoft whi
 Clone this repository:
 
 ```
+cd ~
 git clone https://github.com/michaelshire/workstation.git
 ```
 
@@ -57,5 +58,6 @@ Modify the variables in the ~/workstation/vars.yaml file.
 Then run this playbook with:
 
 ```
+cd ~/workstation
 ansible-playbook playbook.yaml -K
 ```
