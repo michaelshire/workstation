@@ -11,5 +11,5 @@ azurecli:
   dependenciesstate: present
 aws:
   clistate: present
-terraform:
+hashicorp:
   clistate: present

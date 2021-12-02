@@ -69,7 +69,6 @@
           name: azure-cli
           state: "{{ azurecli.clistate }}"
           update_cache: yes
-  # This is a test
   - name: Install AWS CLI
     hosts: localhost
     connection: local
@@ -92,8 +91,8 @@
           dest: /tmp/
           remote_src: True
       - name: run the aws installer script
-        ansible.builtin.shell: /tmp/aws/install && hash aws
-  - name: Install Terraform CLI
+        ansible.builtin.shell: /tmp/aws/install --update && hash aws
+  - name: Install Terraform and Packer CLI
     hosts: localhost
     connection: local
     become: yes
@@ -107,8 +106,9 @@
         apt_repository:
           repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
           state: present
-      - name: install terraform cli
+      - name: install terraform and packer cli
         apt:
-          name: terraform
-          state: "{{ terraform.clistate }}"
+          name: terraform,packer
+          state: "{{ hashicorp.clistate }}"
           update_cache: yes
+  
