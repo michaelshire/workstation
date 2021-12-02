@@ -69,6 +69,7 @@
           name: azure-cli
           state: "{{ azurecli.clistate }}"
           update_cache: yes
+  # This is a test
   - name: Install AWS CLI
     hosts: localhost
     connection: local
