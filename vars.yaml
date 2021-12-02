@@ -13,3 +13,5 @@ aws:
   clistate: present
 hashicorp:
   clistate: present
+podman:
+  clistate: present

@@ -111,4 +111,34 @@
           name: terraform,packer
           state: "{{ hashicorp.clistate }}"
           update_cache: yes
-  
+  - name: Install podman
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
+      - name: remove the default ubuntu version of podman
+        apt:
+          name: podman
+          state: absent
+          autoremove: yes
+      - name: install kubic gpg key
+        ansible.builtin.apt_key:
+          state: present
+          url: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ ansible_distribution_version }}/Release.key
+      - name: install kubic apt repository
+        apt_repository:
+          repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ ansible_distribution_version }}/ /"
+          state: present
+      - name: install kubic podman
+        apt:
+          name: podman
+          state: "{{ podman.clistate }}"
+          update_cache: yes
+      - name: create symlink for docker
+        file:
+          src: /usr/bin/podman
+          dest: /usr/bin/docker
+          owner: root
+          group: root
+          state: link
