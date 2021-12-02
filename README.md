@@ -1,14 +1,17 @@
-# workstation
+# Workstation automated configuration
+
 Ansible playbook for workstation configuration
 
-## Install WSL and fix DNS
+## Install WSL
+
 For a Windows workstation, first install WSL
 
 ```
 wsl --install
 ```
 
-Fix the WSL DNS issue if necessary by creating /etc/wsl.conf with the following contents:
+## Test and fix DNS if required
+Check DNS of the base configuration.  If DNS isn't working, fix the WSL DNS issue if necessary by creating /etc/wsl.conf with the following contents:
 
 ```
 [network]
@@ -41,10 +44,20 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible -y
 sudo apt install ansible -y
 ```
 
-Note: there is an issue with the playbook getting the gpg key from Microsoft while connected to Ledcor VPN.  Disconnect from the VPN before running this playbook.
+Note: there is an issue with the playbook getting the gpg key from Microsoft while connected to some VPNs.  Disconnect from the VPN before running this playbook.
+
+Clone this repository:
+
+```
+cd ~
+git clone https://github.com/michaelshire/workstation.git
+```
+
+Modify the variables in the ~/workstation/vars.yaml file.
 
 Then run this playbook with:
 
 ```
+cd ~/workstation
 ansible-playbook playbook.yaml -K
 ```
