@@ -142,3 +142,13 @@
           owner: root
           group: root
           state: link
+  - name: update and upgrade all apt packages
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files: ./vars.yaml
+    tasks:
+      - name: update
+        apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+      - name: upgrade
+        apt: upgrade=yes
