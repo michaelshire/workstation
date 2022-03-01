@@ -7,7 +7,7 @@
     tasks:
       - name: install base packages
         apt:
-          name: unzip, ruby
+          name: unzip, ruby, jq
           state: present
           update_cache: yes
       - name: install ruby gems
