@@ -7,9 +7,13 @@
     tasks:
       - name: install base packages
         apt:
-          name: unzip
+          name: unzip, ruby
           state: present
           update_cache: yes
+      - name: install ruby gems
+        community.general.gem:
+          name: jwt
+          state: present
   - name: Configure git
     hosts: localhost
     connection: local
