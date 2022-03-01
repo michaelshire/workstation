@@ -1,6 +1,8 @@
 # Workstation automated configuration
 
-Ansible playbook for workstation configuration
+Ansible playbook for workstation configuration.  I built this to have an "ephemeral" Ubuntu image on my workstations that would be consistent.  Feel free to use/share!
+
+The major things it includes are: Openshift CLI, Azure CLI, AWS CLI, Terraform CLI, Packer CLI, and podman.
 
 ## Install WSL
 
