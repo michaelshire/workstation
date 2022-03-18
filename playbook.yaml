@@ -7,7 +7,7 @@
     tasks:
       - name: install base packages
         apt:
-          name: unzip, ruby, jq, openjdk-17-jre-headless
+          name: unzip, ruby, jq, openjdk-17-jre-headless, maven
           state: present
           update_cache: yes
       - name: install ruby gems
