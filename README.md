@@ -3,7 +3,9 @@
 Ansible playbook for workstation configuration.  I built this to have an "ephemeral" Ubuntu image on my workstations that would be consistent.  Feel free to use/share!
 
 This playbook will install/update to the most recent versions available of the following components: git CLI, Openshift and kubectl CLI, Azure CLI, AWS CLI, Terraform CLI, Packer CLI, and podman.
+
 This playbook will install/update to the most recent version available within the default Ubunto APT repository: unzip, ruby, jq, maven, python3
+
 This playbook will install specific versions of the following components: openjdk-17-jre-headless
 
 ## Install WSL
