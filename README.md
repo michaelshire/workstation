@@ -2,11 +2,24 @@
 
 Ansible playbook for workstation configuration.  I built this to have an "ephemeral" Ubuntu image on my workstations that would be consistent.  Feel free to use/share!
 
-This playbook will install/update to the most recent versions available of the following components: git CLI, Openshift and kubectl CLI, Azure CLI, AWS CLI, Terraform CLI, Packer CLI, and podman.
+This playbook will install/update to the most recent versions available of the following components (links to latest for Ubuntu 20.04LTS, but the playbook isn't fixed on that):
+- git CLI [latest](https://github.com/git-for-windows/git/releases/latest)
+- Openshift and kubectl CLI [latest](https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/changelog.html)
+- Azure CLI [latest](https://github.com/Azure/azure-cli/releases/latest)
+- AWS CLI [latest](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst)
+- Terraform CLI [latest](https://github.com/hashicorp/terraform/releases/latest)
+- Packer CLI [latest](https://github.com/hashicorp/packer/releases/latest)
+- podman (kubic) [latest](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/)
 
-This playbook will install/update to the most recent version available within the default Ubunto APT repository: unzip, ruby, jq, maven, python3
+This playbook will install/update to the most recent version available within the default Ubuntu APT repository: 
+- unzip [latest](https://packages.ubuntu.com/focal/unzip)
+- ruby [latest](https://packages.ubuntu.com/focal/ruby)
+- jq [latest](https://packages.ubuntu.com/focal/jq)
+- maven [latest](https://packages.ubuntu.com/focal/maven)
+- python3 [latest](https://packages.ubuntu.com/focal/python3)
 
-This playbook will install specific versions of the following components: openjdk-17-jre-headless
+This playbook will install specific versions of the following components within the default Ubuntu APT repository: 
+- openjdk-17-jre-headless [latest](https://packages.ubuntu.com/focal/openjdk-17-jre-headless)
 
 ## Install WSL
 
