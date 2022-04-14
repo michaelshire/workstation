@@ -17,8 +17,6 @@ This playbook will install/update to the most recent version available within th
 - jq [latest](https://packages.ubuntu.com/focal/jq)
 - maven [latest](https://packages.ubuntu.com/focal/maven)
 - python3 [latest](https://packages.ubuntu.com/focal/python3)
-
-This playbook will install specific versions of the following components within the default Ubuntu APT repository: 
 - openjdk-17-jre-headless [latest](https://packages.ubuntu.com/focal/openjdk-17-jre-headless)
 
 ## Install WSL
