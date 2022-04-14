@@ -5,6 +5,9 @@
     vars_files: ./vars.yaml
     become: yes
     tasks:
+      - name: update apt repo for latest git version
+        apt_repository:
+          repo: 'ppa:git-core/ppa'
       - name: install base packages
         apt:
           name: unzip, ruby, jq, openjdk-17-jre-headless, maven
@@ -15,7 +18,7 @@
           name: jwt
           state: present
           #testing
-  - name: Configure git
+  - name: Configure git for local user
     hosts: localhost
     connection: local
     vars_files: ./vars.yaml
