@@ -29,7 +29,7 @@ wsl --install
 This will by default install Ubuntu 20.04LTS.  Also suggest installing [Windows Terminal](https://www.microsoft.com/en-ca/p/windows-terminal/9n0dx20hk701)
 
 ## Test and fix DNS if required
-Check DNS of the base configuration.  If DNS isn't working, fix the WSL DNS issue if necessary by creating /etc/wsl.conf with the following contents:
+Check DNS of the base configuration.  If DNS isn't working, fix the WSL DNS issue if necessary by creating `/etc/wsl.conf` with the following contents:
 
 ```
 [network]
@@ -71,7 +71,7 @@ cd ~
 git clone https://github.com/michaelshire/workstation.git
 ```
 
-Modify the variables in the ~/workstation/vars.yaml file.
+Modify the variables in the `~/workstation/vars.yaml` file.
 
 Then run this playbook with:
 
