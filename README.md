@@ -20,6 +20,7 @@ This playbook will install/update to the most recent version available within th
 - openjdk-17-jre-headless [latest](https://packages.ubuntu.com/focal/openjdk-17-jre-headless)
 - php [latest](https://packages.ubuntu.com/focal/php)
 - libapache2-mod-php [latest](https://packages.ubuntu.com/focal/libapache2-mod-php)
+- apache2 [latest](https://packages.ubuntu.com/focal/apache2)
 
 ## Install WSL
 
