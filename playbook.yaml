@@ -10,14 +10,19 @@
           repo: 'ppa:git-core/ppa'
       - name: install base packages
         apt:
-          name: unzip, ruby, jq, openjdk-17-jre-headless, maven, php, libapache2-mod-php
+          name: unzip, ruby, jq, openjdk-17-jre-headless, maven, apache2, php, libapache2-mod-php
           state: present
           update_cache: yes
       - name: install ruby gems
         community.general.gem:
           name: jwt
           state: present
-          #testing
+      - name: start apache2
+        service:
+          name: apache2
+          enabled: yes
+          state: started
+          use: systemvinit
   - name: Configure git for local user
     hosts: localhost
     connection: local
