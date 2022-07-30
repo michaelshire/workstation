@@ -98,7 +98,9 @@
           dest: /tmp/
           remote_src: True
       - name: run the aws installer script
-        ansible.builtin.shell: /tmp/aws/install --update && hash aws
+        shell: "/tmp/aws/install --update"
+      - name: hash aws
+        shell: "hash aws"
   - name: Install Terraform and Packer CLI
     hosts: localhost
     connection: local
