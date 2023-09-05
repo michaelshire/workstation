@@ -47,10 +47,10 @@ wsl --shutdown
 
 Restart the ubuntu image, then remove the symbolic link:
 ```
-sudo rm /etc/resolve.conf
+sudo rm /etc/resolv.conf
 ```
 
-Then create a new resolve.conf file with the following contents:
+Then create a new /etc/resolv.conf file with the following contents:
 ```
 nameserver 1.1.1.1
 ```
