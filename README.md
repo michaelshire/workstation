@@ -55,6 +55,11 @@ Then create a new /etc/resolv.conf file with the following contents:
 nameserver 1.1.1.1
 ```
 
+Then change the attributes of the /etc/resolv.conf file so that it is retained after a reboot:
+```
+sudo chattr -f +i /etc/resolv.conf
+```
+
 ## Install Ansible
 Run the following commands to install ansible:
 
