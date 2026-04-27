@@ -1,9 +1,9 @@
 ubuntu:
-  username: 'mshire'
+  username: '<Your ubuntu username>'
 git:
   state: present
-  email: 'mike_shire@hotmail.com'
-  username: 'Michael Shire'
+  email: '<your email address>'
+  username: '<Your Name>'
 jq:
   state: present
 azurecli:
