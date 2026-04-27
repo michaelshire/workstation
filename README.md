@@ -55,11 +55,6 @@ Then create a new /etc/resolv.conf file with the following contents:
 nameserver 1.1.1.1
 ```
 
-Then change the attributes of the /etc/resolv.conf file so that it is retained after a reboot:
-```
-sudo chattr -f +i /etc/resolv.conf
-```
-
 ## Install Ansible
 Run the following commands to install ansible:
 
@@ -86,4 +81,14 @@ Then run this playbook with:
 ```
 cd ~/workstation
 ansible-playbook playbook.yaml -K
+```
+
+# Update/NOTE: Kubic and Podman
+
+If you have previously used this playbook to install kubic and podman, you may need to remove the old version before re-using this playbook.
+
+Use the following command to first remove kubic podman then continue with the normal playbook:
+
+```
+ansible-playbook removepodman.yaml -K
 ```

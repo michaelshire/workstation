@@ -5,9 +5,11 @@
     vars_files: ./vars.yaml
     become: yes
     tasks:
-      - name: update apt repo for latest git version
-        apt_repository:
-          repo: 'ppa:git-core/ppa'
+      - name: Update apt cache and install Git
+        ansible.builtin.apt:
+          name: git
+          state: present
+          update_cache: yes
       - name: install base packages
         apt:
           name: unzip, ruby, jq, openjdk-17-jre-headless, maven
@@ -131,18 +133,10 @@
           name: podman
           state: absent
           autoremove: yes
-      - name: install kubic gpg key
-        ansible.builtin.apt_key:
-          state: present
-          url: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ ansible_distribution_version }}/Release.key
-      - name: install kubic apt repository
-        apt_repository:
-          repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_{{ ansible_distribution_version }}/ /"
-          state: present
-      - name: install kubic podman
+      - name: install podman
         apt:
           name: podman
-          state: "{{ podman.clistate }}"
+          state: present
           update_cache: yes
       - name: create symlink for docker
         file:
